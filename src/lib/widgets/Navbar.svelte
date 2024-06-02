@@ -1,7 +1,5 @@
 <script>
-	// import Notifications from '$lib/dashboard/NotificationList.svelte';
-	// import AppsMenu from '$lib/widgets/AppsMenu.svelte';
-	// import UserMenu from '$lib/widgets/UserMenu.svelte';
+	import UserMenu from './UserMenu.svelte';
 	import {
 		DarkMode,
 		Dropdown,
@@ -15,7 +13,7 @@
 	} from 'flowbite-svelte';
 	import { ChevronDownOutline } from 'flowbite-svelte-icons';
 	import '../../app.pcss';
-	// import Users from '../data/users.json';
+	import Users from '../data/users.json';
 
 	export let fluid = true;
 	export let drawerHidden = false;
@@ -46,7 +44,7 @@
 			<!-- <Notifications />
 			<AppsMenu /> -->
 			<DarkMode />
-			<!-- <UserMenu {...Users[4]} /> -->
+			<UserMenu {...Users[4]} />
 		</div>
 	</NavContainer>
 </Navbar>

@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      svelte-meta-tags:
+        specifier: ^3.1.2
+        version: 3.1.2(svelte@4.2.17)(typescript@5.4.5)
     devDependencies:
       '@playwright/test':
         specifier: ^1.28.1
@@ -1510,6 +1514,11 @@ packages:
   sander@0.5.1:
     resolution: {integrity: sha512-3lVqBir7WuKDHGrKRDn/1Ye3kwpXaDOMsiRP1wd6wpZW56gJhsbp5RqQpA6JG/P+pkXizygnr1dKR8vzWaVsfA==}
 
+  schema-dts@1.1.2:
+    resolution: {integrity: sha512-MpNwH0dZJHinVxk9bT8XUdjKTxMYrA5bLtrrGmFA6PTLwlOKnhi67XoRd6/ty+Djt6ZC0slR57qFhZDNMI6DhQ==}
+    peerDependencies:
+      typescript: '>=4.1.0'
+
   semver@7.6.2:
     resolution: {integrity: sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==}
     engines: {node: '>=10'}
@@ -1619,6 +1628,11 @@ packages:
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
+
+  svelte-meta-tags@3.1.2:
+    resolution: {integrity: sha512-zw8xSA10ce7atFO1o0N1x41+qU+HBnpGx8KcVRAWPy5iiRdO6fvUFMg6VwJVgMhLSBEUTZXKAvMALLUssbCoCw==}
+    peerDependencies:
+      svelte: ^3.55.0 || ^4.0.0
 
   svelte-preprocess@5.1.4:
     resolution: {integrity: sha512-IvnbQ6D6Ao3Gg6ftiM5tdbR6aAETwjhHV+UKGf5bHGYR69RQvF1ho0JKPcbUON4vy4R7zom13jPjgdOWCQ5hDA==}
@@ -3212,6 +3226,10 @@ snapshots:
       mkdirp: 0.5.6
       rimraf: 2.7.1
 
+  schema-dts@1.1.2(typescript@5.4.5):
+    dependencies:
+      typescript: 5.4.5
+
   semver@7.6.2: {}
 
   set-cookie-parser@2.6.0: {}
@@ -3330,6 +3348,13 @@ snapshots:
   svelte-hmr@0.16.0(svelte@4.2.17):
     dependencies:
       svelte: 4.2.17
+
+  svelte-meta-tags@3.1.2(svelte@4.2.17)(typescript@5.4.5):
+    dependencies:
+      schema-dts: 1.1.2(typescript@5.4.5)
+      svelte: 4.2.17
+    transitivePeerDependencies:
+      - typescript
 
   svelte-preprocess@5.1.4(postcss-load-config@4.0.2(postcss@8.4.38))(postcss@8.4.38)(svelte@4.2.17)(typescript@5.4.5):
     dependencies:

@@ -12,7 +12,7 @@
 </script>
 
 <button class="ms-3 rounded-full ring-gray-400 focus:ring-4 dark:ring-gray-600">
-	<Avatar rounded border />
+	<Avatar border />
 </button>
 <Dropdown placement="bottom-end">
 	<DropdownHeader>

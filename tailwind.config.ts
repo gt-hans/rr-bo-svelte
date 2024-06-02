@@ -12,7 +12,7 @@ export default {
 
   plugins: [require('flowbite/plugin'), require("@tailwindcss/typography")],
 
-  darkMode: 'selector',
+  darkMode: 'class',
 
   theme: {
     extend: {

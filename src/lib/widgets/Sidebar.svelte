@@ -66,7 +66,6 @@
 				Users: '/crud/users'
 			}
 		},
-		{ name: 'Settings', icon: CogOutline, href: '/settings' },
 		{
 			name: 'Pages',
 			icon: FileChartBarSolid,
@@ -99,26 +98,7 @@
 	];
 
 	let links = [
-		{
-			label: 'GitHub Repository',
-			href: 'https://github.com/themesberg/flowbite-svelte-admin-dashboard',
-			icon: GithubSolid
-		},
-		{
-			label: 'Flowbite Svelte',
-			href: 'https://flowbite-svelte.com/docs/pages/quickstart',
-			icon: ClipboardListSolid
-		},
-		{
-			label: 'Components',
-			href: 'https://flowbite-svelte.com/docs/components/accordion',
-			icon: LayersSolid
-		},
-		{
-			label: 'Support',
-			href: 'https://github.com/themesberg/flowbite-svelte-admin-dashboard/issues',
-			icon: LifeSaverSolid
-		}
+		{ name: 'Settings', icon: CogOutline, href: '/settings' },
 	];
 	let dropdowns = Object.fromEntries(Object.keys(posts).map((x) => [x, false]));
 </script>
@@ -166,9 +146,9 @@
 				{/each}
 			</SidebarGroup>
 			<SidebarGroup ulClass={groupClass}>
-				{#each links as { label, href, icon } (label)}
+				{#each links as { name, href, icon } (name)}
 					<SidebarItem
-						{label}
+						label={name}
 						{href}
 						spanClass="ml-3"
 						class={itemClass}

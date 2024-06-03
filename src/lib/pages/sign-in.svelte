@@ -3,15 +3,15 @@
 	import { SignIn } from '$lib';
   import MetaTag from '../utils/MetaTag.svelte';
 	let title = 'Sign in to platform';
-	let site = {
-		name: 'Flowbite',
+	export let site = {
+		name: 'RRBull',
 		img: '/images/flowbite-svelte-icon-logo.svg',
 		link: '/',
-		imgAlt: 'FlowBite Logo'
+		imgAlt: 'RRBull Logo'
 	};
 	let rememberMe = true;
 	let lostPassword = true;
-	let createAccount = true;
+	let createAccount = false;
 	let lostPasswordLink = 'forgot-password';
 	let loginTitle = 'Login to your account';
 	let registerLink = 'sign-up';
@@ -26,15 +26,14 @@
 			data[key] = value;
 		}
 		console.log(data);
+		localStorage.setItem('user', JSON.stringify(data));
 	};
 
-	const path: string = '/authentication/sign-in';
-  const description: string = 'Sign in example - Flowbite Svelte Admin Dashboard';
-	const metaTitle: string = 'Flowbite Svelte Admin Dashboard - Sign in';
-  const subtitle: string = 'Sign in';
+  const description: string = 'RRBull Backoffice Sign In Page';
+	const metaTitle: string = 'RRBull Backoffice - Sign in';
 </script>
 
-<MetaTag {path} {description} title={metaTitle} {subtitle} />
+<MetaTag {description} title={metaTitle} />
 
 <SignIn
 	{title}
@@ -45,7 +44,6 @@
 	{lostPasswordLink}
 	{loginTitle}
 	{registerLink}
-	{createAccountTitle}
 	on:submit={onSubmit}
 >
 	<div>

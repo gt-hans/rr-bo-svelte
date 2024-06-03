@@ -3,7 +3,7 @@
 	import Navbar from '$lib/widgets/Navbar.svelte';
   import Sidebar from '$lib/widgets/Sidebar.svelte';
 	import type { LayoutData } from './$types';
-  import SignIn from '$lib/widgets/sign-in.svelte';
+  import SignIn from '$lib/pages/sign-in.svelte';
 	let drawerHidden = false;
 	export let data: LayoutData;
 	console.log(data.login?.result);

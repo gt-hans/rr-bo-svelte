@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Label, Input } from 'flowbite-svelte';
 	import { SignIn } from '$lib';
-  import MetaTag from '../utils/MetaTag.svelte';
+  import MetaTag from '$lib/utils/MetaTag.svelte';
 	let title = 'Sign in to platform';
 	export let site = {
 		name: 'RRBull',
@@ -15,7 +15,6 @@
 	let lostPasswordLink = 'forgot-password';
 	let loginTitle = 'Login to your account';
 	let registerLink = 'sign-up';
-	let createAccountTitle = 'Create account';
 
 	const onSubmit = (e: Event) => {
 		const formData = new FormData(e.target as HTMLFormElement);

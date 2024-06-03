@@ -3,7 +3,6 @@
 	import Navbar from '$lib/widgets/Navbar.svelte';
   import Sidebar from '$lib/widgets/Sidebar.svelte';
 	import type { LayoutData } from './$types';
-  import SignIn from '$lib/pages/sign-in.svelte';
 	let drawerHidden = false;
 	export let data: LayoutData;
 	console.log(data.login?.result);
@@ -11,7 +10,7 @@
 </script>
 
 {#if !data.login?.result}
-	<SignIn />
+	<slot />
 {:else}
 <header
 	class="fixed top-0 z-40 mx-auto w-full flex-none border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-800"

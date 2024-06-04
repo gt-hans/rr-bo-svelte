@@ -16,7 +16,7 @@ export async function load({ cookies, locals, params }) {
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-  default: async ({ cookies, request }) => {
+  login: async ({ cookies, request }) => {
     // TODO log the user in
     const id = cookies.get('userid');
     const data = await request.formData();

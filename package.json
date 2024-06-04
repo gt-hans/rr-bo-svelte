@@ -46,6 +46,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"flowbite-svelte-blocks": "^1.1.1",
 		"svelte-meta-tags": "^3.1.2"
 	}
 }

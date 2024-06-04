@@ -1,5 +1,6 @@
 // authentication
 export { default as SignIn } from './authentication/SignIn.svelte';
+export { default as SignIn_rr } from './authentication/SignIn-rr.svelte';
 export { default as ForgotPassword } from './authentication/ForgotPassword.svelte';
 export { default as ResetPassword } from './authentication/ResetPassword.svelte';
 

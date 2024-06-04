@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { Label, Input, Button } from 'flowbite-svelte';
-  import { SignIn_rr } from '$lib';
+  import { writable } from 'svelte/store';
+  import { Label, Input, Button, Spinner } from 'flowbite-svelte';
+  import { Button_rr, SignIn_rr } from '$lib';
   import MetaTag from '$lib/utils/MetaTag.svelte';
   let title = 'Sign in to platform';
   export let site = {
@@ -15,8 +16,10 @@
   let lostPasswordLink = 'forgot-password';
   let loginTitle = 'Login to your account';
   let registerLink = 'sign-up';
-  let loading = false;
+  let loadingSendCode = false;
   let required = false;
+  // const email = writable('');
+  let email = '';
 
   const onSubmit = async (e: Event) => {
     const formData = new FormData(e.target as HTMLFormElement);
@@ -39,18 +42,22 @@
     const { success, email, id } = result;
     console.log(result, success, email, id);
   };
-  const onSendCode = async () => {
-    console.log('send code');
-    return;
+  const onSendCode = async (emailIn: string) => {
+    console.log(emailIn);
+    console.log('send code email: ', emailIn, loadingSendCode);
+    loadingSendCode = true;
     const response = await fetch('/api/send-code', {
       method: 'POST',
+      body: JSON.stringify({ emailIn }),
       headers: {
         'Content-Type': 'application/json'
       }
     });
 
     const result = await response.json();
+    const { success, email, id, countdown } = result;
     console.log(result);
+    loadingSendCode = false;
   };
 
   const description: string = 'RRBull Backoffice Sign In Page';
@@ -73,6 +80,7 @@
   <div>
     <Label for="email" class="mb-2 dark:text-white">Your email</Label>
     <Input
+      bind:value={email}
       type="email"
       name="email"
       id="email"
@@ -92,7 +100,28 @@
         {required}
         class="mr-2 w-1/2 flex-grow border outline-none dark:border-gray-600 dark:bg-gray-700"
       />
-      <Button type="button" class="ml-2 w-1/3 flex-grow" on:click={onSendCode} disabled={true}>Send Code</Button>
+      <!-- <Button
+        type="button"
+        class="ml-2 w-1/3 flex-grow"
+        disabled={loadingSendCode}
+        on:click={() => onSendCode(email)}
+      >
+        {#if loadingSendCode}
+          <Spinner class="me-1" size="4" color="white"/>
+        {/if}
+        Send Code
+      </Button> -->
+      <Button_rr
+        btnType="button"
+        btnClass="ml-2 w-1/3 flex-grow"
+        loading={loadingSendCode}
+        exFn={() => onSendCode(email)}
+        spinClass="mr-3"
+        spinSize="4"
+        spinColor="white"
+        >
+        Send Code
+      </Button_rr>
     </div>
   </div>
 </SignIn_rr>

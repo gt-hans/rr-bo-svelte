@@ -3,7 +3,9 @@
   import { Label, Input, Spinner } from 'flowbite-svelte';
   import { Button_rr, SignIn_rr } from '$lib';
   import MetaTag from '$lib/utils/MetaTag.svelte';
-  import { Button, Flex, Space } from '@svelteuidev/core';
+  import { Button, Flex, Text } from '@svelteuidev/core';
+  import { SvelteUIProvider, type ColorScheme } from '@svelteuidev/core';
+  import { getTheme } from '$lib/utils/UtilFunctions';
 
   let title = 'Sign in to platform';
   export let site = {
@@ -20,8 +22,10 @@
   let registerLink = 'sign-up';
   let loadingSendCode = false;
   let required = false;
-  // const email = writable('');
   let email = '';
+  let cd = writable(0);
+  let interval: any = writable();
+  let btnSendCodeDisabled = false;
 
   const onSubmit = async (e: Event) => {
     const formData = new FormData(e.target as HTMLFormElement);
@@ -60,8 +64,19 @@
 
     const result = await response.json();
     const { success, email, id, countdown } = result;
+    $cd = countdown;
     console.log(result);
     loadingSendCode = false;
+    btnSendCodeDisabled = true;
+    $interval = setInterval(() => {
+      if ($cd > 0) {
+        $cd -= 1;
+      }
+      if ($cd === 0) {
+        btnSendCodeDisabled = false;
+        clearInterval($interval);
+      }
+    }, 1000);
   };
 
   const description: string = 'RRBull Backoffice Sign In Page';
@@ -103,8 +118,15 @@
       {required}
       class="mr-2 w-1/2 flex-grow border outline-none dark:border-gray-600 dark:bg-gray-700"
     />
-    <Button size="md" on:click={()=>onSendCode(email)} loading={loadingSendCode}>
-      Send Code
+    <Button
+      override={$cd > 0 ? { color: 'white !important' } : {}}
+      variant="light"
+      size="md"
+      on:click={() => onSendCode(email)}
+      loading={loadingSendCode}
+      disabled={btnSendCodeDisabled}
+    >
+      {#if $cd > 0}{$cd}&nbsp;{/if}Send Code
     </Button>
   </Flex>
 </SignIn_rr>

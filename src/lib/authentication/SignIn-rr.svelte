@@ -43,7 +43,7 @@
     <!-- Card -->
     <Card class="w-full" size="md" border={false}>
       <h1 class={cardH1Class}>
-        <button on:click={() => toggleTheme()}><DarkMode /></button>{title}
+        {title}<button class="float-end" on:click={() => toggleTheme()}><DarkMode /></button>
       </h1>
       <form class="mt-8 space-y-6" on:submit|preventDefault>
         <slot />

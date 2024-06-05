@@ -4,7 +4,7 @@
   import Navbar from '$lib/widgets/Navbar.svelte';
   import Sidebar from '$lib/widgets/Sidebar.svelte';
   import type { LayoutData } from './$types';
-  import { SvelteUIProvider, type ColorScheme } from '@svelteuidev/core';
+  import { SvelteUIProvider, colorScheme } from '@svelteuidev/core';
 	import { getTheme, applyTheme } from '$lib/utils/UtilFunctions';
 
 	let bReady = false;
@@ -20,7 +20,7 @@
 </script>
 
 {#if bReady}
-<SvelteUIProvider withGlobalStyles themeObserver={getTheme()}>
+<SvelteUIProvider withGlobalStyles themeObserver={$colorScheme}>
   {#if !data.login?.result}
     <slot />
   {:else}

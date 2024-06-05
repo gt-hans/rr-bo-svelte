@@ -1,6 +1,11 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { Label, Input, Checkbox, A, Button, Card, DarkMode } from 'flowbite-svelte';
-  export let title = 'Sign in to platform';
+  import { writable } from 'svelte/store';
+  import { theme } from '@svelteuidev/core';
+	import { toggleTheme, applyTheme } from '$lib/utils/UtilFunctions';
+
+	export let title = 'Sign in to platform';
   export let site = {
     name: 'Flowbite',
     img: '/images/flowbite-svelte-icon-logo.svg',
@@ -22,6 +27,11 @@
     'flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 dark:text-white';
   export let siteImgClass = 'mr-4 h-11';
   export let cardH1Class = 'text-2xl font-bold text-gray-900 dark:text-white';
+
+  // Apply the theme when the component mounts
+  onMount(() => {
+    applyTheme();
+  });
 </script>
 
 <main class={mainClass}>
@@ -33,7 +43,7 @@
     <!-- Card -->
     <Card class="w-full" size="md" border={false}>
       <h1 class={cardH1Class}>
-        <DarkMode />{title}
+        <button on:click={() => toggleTheme()}><DarkMode /></button>{title}
       </h1>
       <form class="mt-8 space-y-6" on:submit|preventDefault>
         <slot />

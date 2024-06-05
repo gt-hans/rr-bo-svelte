@@ -1,8 +1,10 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
-  import { Label, Input, Button, Spinner } from 'flowbite-svelte';
+  import { Label, Input, Spinner } from 'flowbite-svelte';
   import { Button_rr, SignIn_rr } from '$lib';
   import MetaTag from '$lib/utils/MetaTag.svelte';
+  import { Button, Flex, Space } from '@svelteuidev/core';
+
   let title = 'Sign in to platform';
   export let site = {
     name: 'RRBull',
@@ -43,7 +45,9 @@
     console.log(result, success, email, id);
   };
   const onSendCode = async (emailIn: string) => {
-    console.log(emailIn);
+    if (!emailIn) {
+      return;
+    }
     console.log('send code email: ', emailIn, loadingSendCode);
     loadingSendCode = true;
     const response = await fetch('/api/send-code', {
@@ -89,39 +93,41 @@
       class="border outline-none dark:border-gray-600 dark:bg-gray-700"
     />
   </div>
-  <div>
-    <Label for="password" class="mb-2 dark:text-white">Your code</Label>
-    <div class="flex justify-between">
-      <Input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="••••••••"
-        {required}
-        class="mr-2 w-1/2 flex-grow border outline-none dark:border-gray-600 dark:bg-gray-700"
-      />
-      <!-- <Button
-        type="button"
-        class="ml-2 w-1/3 flex-grow"
-        disabled={loadingSendCode}
-        on:click={() => onSendCode(email)}
-      >
-        {#if loadingSendCode}
-          <Spinner class="me-1" size="4" color="white"/>
-        {/if}
-        Send Code
-      </Button> -->
-      <Button_rr
-        btnType="button"
-        btnClass="ml-2 w-1/3 flex-grow"
-        loading={loadingSendCode}
-        exFn={() => onSendCode(email)}
-        spinClass="mr-3"
-        spinSize="4"
-        spinColor="white"
-        >
-        Send Code
-      </Button_rr>
-    </div>
-  </div>
+  <Label for="password" class="mb-2 dark:text-white">Your code</Label>
+  <Flex justify="space-between">
+    <Input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="••••••••"
+      {required}
+      class="mr-2 w-1/2 flex-grow border outline-none dark:border-gray-600 dark:bg-gray-700"
+    />
+    <Button size="md" on:click={()=>onSendCode(email)} loading={loadingSendCode}>
+      Send Code
+    </Button>
+  </Flex>
 </SignIn_rr>
+
+<!-- <Button
+    type="button"
+    class="ml-2 w-1/3 flex-grow"
+    disabled={loadingSendCode}
+    on:click={() => onSendCode(email)}
+  >
+    {#if loadingSendCode}
+      <Spinner class="me-1" size="4" color="white"/>
+    {/if}
+    Send Code
+  </Button> -->
+<!-- <Button_rr
+    btnType="button"
+    btnClass="ml-2 w-1/3 flex-grow"
+    loading={loadingSendCode}
+    exFn={() => onSendCode(email)}
+    spinClass="ml-1.5"
+    spinSize="4"
+    spinColor="white"
+  >
+    Send Code
+  </Button_rr> -->

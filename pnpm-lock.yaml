@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@svelteuidev/composables':
+        specifier: ^0.15.6
+        version: 0.15.6(svelte@4.2.17)
+      '@svelteuidev/core':
+        specifier: ^0.15.6
+        version: 0.15.6(@svelteuidev/composables@0.15.6(svelte@4.2.17))(svelte@4.2.17)
       flowbite-svelte-blocks:
         specifier: ^1.1.1
         version: 1.1.1(svelte@4.2.17)
@@ -281,6 +287,9 @@ packages:
   '@floating-ui/core@1.6.2':
     resolution: {integrity: sha512-+2XpQV9LLZeanU4ZevzRnGFg2neDeKHgFLjP6YLW+tly0IvrhqT4u8enLGjLH3qeh85g19xY5rsAusfwTdn5lg==}
 
+  '@floating-ui/dom@1.2.8':
+    resolution: {integrity: sha512-XLwhYV90MxiHDq6S0rzFZj00fnDM+A1R9jhSioZoMsa7G0Q0i+Q4x40ajR8FHSdYDE1bgjG45mIWe6jtv9UPmg==}
+
   '@floating-ui/dom@1.6.5':
     resolution: {integrity: sha512-Nsdud2X65Dz+1RHjAIP0t8z5e2ff/IRbei6BqFrl1urT8sDVzM1HMQ+R0XcU5ceRfyO3I6ayeqIfh+6Wb8LGTw==}
 
@@ -431,6 +440,9 @@ packages:
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
 
+  '@stitches/core@1.2.8':
+    resolution: {integrity: sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==}
+
   '@sveltejs/adapter-auto@3.2.1':
     resolution: {integrity: sha512-/3xx8ZFCD5UBc/7AbyXkFF3HNCzWAp2xncH8HA4doGjoGQEN7PmwiRx4Y9nOzi4mqDqYYUic0gaIAE2khWWU4Q==}
     peerDependencies:
@@ -459,6 +471,17 @@ packages:
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0-next.0
       vite: ^5.0.0
+
+  '@svelteuidev/composables@0.15.6':
+    resolution: {integrity: sha512-uWlImPhLjvdI0uCMFrVxt4h0jcxX69RlImHaoDSQBMyArQHoSMb3fjdTNTAte8n9F2Oq0yqrncloybBcs7TDKA==}
+    peerDependencies:
+      svelte: '>=3.55.0'
+
+  '@svelteuidev/core@0.15.6':
+    resolution: {integrity: sha512-6UaoyVW/8G+2wi9h4SjnJdJe9G6aefZo5S4Rg9M8AKl2QfzKe45ZElcO8L8MgzHUnGTx0LPkwePJUVlWHjBuOg==}
+    peerDependencies:
+      '@svelteuidev/composables': 0.15.6
+      svelte: '>=3.55.0'
 
   '@tailwindcss/typography@0.5.13':
     resolution: {integrity: sha512-ADGcJ8dX21dVVHIwTRgzrcunY6YY9uSlAHHGVKvkA+vLc5qLwEszvKts40lx7z0qc4clpjclwLeK5rVCV2P/uw==}
@@ -2049,6 +2072,10 @@ snapshots:
     dependencies:
       '@floating-ui/utils': 0.2.2
 
+  '@floating-ui/dom@1.2.8':
+    dependencies:
+      '@floating-ui/core': 1.6.2
+
   '@floating-ui/dom@1.6.5':
     dependencies:
       '@floating-ui/core': 1.6.2
@@ -2163,6 +2190,8 @@ snapshots:
 
   '@sinclair/typebox@0.27.8': {}
 
+  '@stitches/core@1.2.8': {}
+
   '@sveltejs/adapter-auto@3.2.1(@sveltejs/kit@2.5.10(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.17)(vite@5.2.12(@types/node@20.13.0)))(svelte@4.2.17)(vite@5.2.12(@types/node@20.13.0)))':
     dependencies:
       '@sveltejs/kit': 2.5.10(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.17)(vite@5.2.12(@types/node@20.13.0)))(svelte@4.2.17)(vite@5.2.12(@types/node@20.13.0))
@@ -2208,6 +2237,17 @@ snapshots:
       vitefu: 0.2.5(vite@5.2.12(@types/node@20.13.0))
     transitivePeerDependencies:
       - supports-color
+
+  '@svelteuidev/composables@0.15.6(svelte@4.2.17)':
+    dependencies:
+      svelte: 4.2.17
+
+  '@svelteuidev/core@0.15.6(@svelteuidev/composables@0.15.6(svelte@4.2.17))(svelte@4.2.17)':
+    dependencies:
+      '@floating-ui/dom': 1.2.8
+      '@stitches/core': 1.2.8
+      '@svelteuidev/composables': 0.15.6(svelte@4.2.17)
+      svelte: 4.2.17
 
   '@tailwindcss/typography@0.5.13(tailwindcss@3.4.3)':
     dependencies:
